@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargas — Zyrix</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">⚡ Zyrix</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="tienda.html" class="nav-link">Tienda</a>
+      <a href="patrocinadores.html" class="nav-link">Patrocinadores</a>
+      <a href="descargas.html" class="nav-link active">Descargas</a>
+    </div>
+    <div class="navbar-account">
+      <div class="account-menu">
+        <img src="assets/images/default-avatar.svg" alt="avatar" class="account-avatar">
+        <div class="dropdown-menu">
+          <div id="accountName">Invitado</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom: 48px; text-align: center;">
+          <h2 style="font-size: 40px; margin-bottom: 12px;">📥 Centro De Descargas</h2>
+          <p style="color: var(--text-secondary); font-size: 16px; max-width: 700px; margin: 0 auto;">Software profesional y herramientas exclusivas para miembros verificados de Zyrix</p>
+        </div>
+
+        <!-- Download Categories -->
+        <div style="margin-bottom: 48px;">
+          <h3 style="text-align: center; margin-bottom: 32px; font-size: 28px;">🎯 Herramientas Disponibles</h3>
+
+          <!-- Category: Simulación -->
+          <div style="margin-bottom: 40px;">
+            <h4 style="font-size: 20px; margin-bottom: 20px; color: var(--accent-electric); display: flex; align-items: center; gap: 8px;">
+              <span>🌪️</span> Simulación & Análisis
+            </h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+              <div class="card" style="padding: 28px; border: 2px solid rgba(0, 212, 255, 0.1);">
+                <h3 style="margin-bottom: 8px;">Software de Análisis Aerodinámico</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Simulador profesional para análisis de flujo y aerodinámica vehicular con herramientas CFD avanzadas.</p>
+                <div style="background: rgba(0,212,255,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> Windows 10+, 4GB RAM, OpenGL 4.0
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('aero', 'aero-v1.0.zip')">📥 Descargar v1.0</button>
+              </div>
+
+              <div class="card" style="padding: 28px; border: 2px solid rgba(0, 212, 255, 0.1);">
+                <h3 style="margin-bottom: 8px;">Simulador de Conducción Autónoma</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Ambiente realista de prueba para algoritmos de conducción autónom e IA vehicular.</p>
+                <div style="background: rgba(0,212,255,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> Python 3.8+, CUDA 11.0, 8GB RAM
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('sim', 'autonomous-sim.zip')">📥 Descargar v2.1</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: Diseño -->
+          <div style="margin-bottom: 40px;">
+            <h4 style="font-size: 20px; margin-bottom: 20px; color: var(--accent-orange); display: flex; align-items: center; gap: 8px;">
+              <span>🎨</span> Diseño & Modelado
+            </h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+              <div class="card" style="padding: 28px; border: 2px solid rgba(255, 107, 53, 0.1);">
+                <h3 style="margin-bottom: 8px;">Suite CAD para Diseño Vehicular</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Herramientas profesionales de modelado 3D, diseño paramétrico y análisis estructural.</p>
+                <div style="background: rgba(255,107,53,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> macOS 10.14+ o Windows 10+, 8GB RAM
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('cad', 'cad-pro.zip')">📥 Descargar Pro</button>
+              </div>
+
+              <div class="card" style="padding: 28px; border: 2px solid rgba(255, 107, 53, 0.1);">
+                <h3 style="margin-bottom: 8px;">Librería Gráfica 3D</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Librería especializada en rendering 3D y visualización de prototipos vehiculares en tiempo real.</p>
+                <div style="background: rgba(255,107,53,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> C++17, DirectX 12 / OpenGL 4.6
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('graphics', 'graphics-lib.tar.gz')">📥 Descargar 1.5</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: Programación -->
+          <div style="margin-bottom: 40px;">
+            <h4 style="font-size: 20px; margin-bottom: 20px; color: var(--accent-green); display: flex; align-items: center; gap: 8px;">
+              <span>💻</span> Programación & Control
+            </h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+              <div class="card" style="padding: 28px; border: 2px solid rgba(0, 217, 126, 0.1);">
+                <h3 style="margin-bottom: 8px;">Librería de Control Embebido</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Código abierto y librerías optimizadas para sistemas embebidos en vehículos competitivos.</p>
+                <div style="background: rgba(0,217,126,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> ARM Cortex-M4+, RTOS, C/C++
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('embedded', 'embedded-lib.tar.gz')">📥 Descargar 3.2</button>
+              </div>
+
+              <div class="card" style="padding: 28px; border: 2px solid rgba(0, 217, 126, 0.1);">
+                <h3 style="margin-bottom: 8px;">Driver & Framework ROS</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">Drivers para sensores y framework Robot Operating System (ROS) para sistemas autónomos.</p>
+                <div style="background: rgba(0,217,126,0.1); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px;">
+                  <strong>Req:</strong> Ubuntu 20.04 LTS, ROS Noetic, Python 3.8+
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="downloadFile('ros', 'ros-framework.tar.gz')">📥 Descargar 1.3</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="card" style="padding: 32px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 217, 126, 0.05) 100%); border: 2px solid rgba(0, 212, 255, 0.1); margin-bottom: 48px;">
+          <h3 style="text-align: center; margin-bottom: 32px; font-size: 24px;">🛡️ Características De Seguridad</h3>
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 12px;">✅</div>
+              <h4 style="margin-bottom: 8px;">Verificación de Licencia</h4>
+              <p style="color: var(--text-secondary); font-size: 13px; margin: 0;">Todos los softwares incluyen verificación de licencia en línea</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 12px;">🔐</div>
+              <h4 style="margin-bottom: 8px;">Encriptación SHA-256</h4>
+              <p style="color: var(--text-secondary); font-size: 13px; margin: 0;">Archivos encriptados y verificados con SHA-256</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 12px;">📊</div>
+              <h4 style="margin-bottom: 8px;">Uso Registrado</h4>
+              <p style="color: var(--text-secondary); font-size: 13px; margin: 0;">Descarga y uso registrados para auditoría</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 12px;">🚀</div>
+              <h4 style="margin-bottom: 8px;">Actualizaciones Gratis</h4>
+              <p style="color: var(--text-secondary); font-size: 13px; margin: 0;">Acceso a actualizaciones menores sin costo adicional</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Login Required Notice -->
+        <div class="card" style="padding: 32px; border: 2px solid rgba(255,165,0,0.2); background: rgba(255,165,0,0.05);">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="font-size: 40px;">🔐</div>
+            <div>
+              <h3 style="margin: 0 0 8px 0;">Acceso Restringido</h3>
+              <p style="color: var(--text-secondary); margin: 0; font-size: 14px;">Algunos softwares requieren que estés logueado con una cuenta verificada. Haz clic en descargar para verificar tu acceso.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Unlock Modal -->
+  <div id="unlockModal" class="modal">
+    <div class="modal-content" style="text-align: center;">
+      <div style="font-size: 64px; margin-bottom: 24px;">🔒</div>
+      <h3 class="modal-title">Acceso Restringido</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">Para descargar este archivo, debes estar logueado y con tu cuenta verificada.</p>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('unlockModal')">Cerrar</button>
+        <button class="btn btn-primary" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">© 2026 Zyrix</div>
+  </footer>
+
+  <!-- Floating Assistant -->
+  <div class="assistant-btn">🤖</div>
+
+  <script type="module">
+    import { setupNavbar, setupAccountDropdown, showToast, openModal, closeModal, getCurrentUser } from './assets/js/shared.js';
+
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+
+    setupNavbar();
+    setupAccountDropdown();
+
+    window.downloadFile = function(id, file) {
+      const user = getCurrentUser();
+      if (!user) {
+        showToast('⚠️ Debes iniciar sesión primero', 'error');
+        openModal('unlockModal');
+        return;
+      }
+      
+      showToast('✅ Descarga iniciada: ' + file, 'success');
+      
+      // Simular descarga
+      const element = document.createElement('a');
+      const file_data = new Blob([`Archivo: ${file}\nDescargado por: ${user.email}\nFecha: ${new Date().toISOString()}`], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file_data);
+      element.download = file;
+      element.click();
+    };
+  </script>
+  <script src="assets/js/assistant.js"></script>
+</body>
+</html>

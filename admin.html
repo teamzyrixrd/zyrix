@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin — Zyrix</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">⚡ Zyrix</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="tienda.html" class="nav-link">Tienda</a>
+      <a href="patrocinadores.html" class="nav-link">Patrocinadores</a>
+      <a href="descargas.html" class="nav-link">Descargas</a>
+    </div>
+    <div class="navbar-account">
+      <div class="account-menu">
+        <img src="assets/images/default-avatar.svg" alt="avatar" class="account-avatar">
+        <div class="dropdown-menu">
+          <div id="accountName">Invitado</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h2 style="margin: 0 0 8px 0;">⚙️ Panel Administrativo</h2>
+            <p style="color: var(--text-secondary); margin: 0; font-size: 14px;">Gestiona usuarios, productos y patrocinios</p>
+          </div>
+          <button class="btn btn-secondary" onclick="logout()" style="padding: 10px 20px;">🚪 Cerrar Sesión</button>
+        </div>
+        
+        <div id="adminContent" style="display: none;">
+          <!-- Stats Dashboard -->
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 48px;">
+            <div class="card" style="padding: 28px; border: 2px solid rgba(0, 212, 255, 0.1); background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                <div style="font-size: 28px;">👥</div>
+                <div style="background: rgba(0,212,255,0.2); color: var(--accent-electric); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">+5 HOY</div>
+              </div>
+              <h4 style="margin: 0 0 4px 0; color: var(--text-secondary); font-size: 12px; text-transform: uppercase;">Usuarios Totales</h4>
+              <div id="statUsers" style="font-size: 32px; font-weight: 800; color: var(--accent-electric);">0</div>
+            </div>
+
+            <div class="card" style="padding: 28px; border: 2px solid rgba(0, 217, 126, 0.1); background: linear-gradient(135deg, rgba(0, 217, 126, 0.05) 0%, transparent 100%);">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                <div style="font-size: 28px;">✅</div>
+                <div style="background: rgba(0,217,126,0.2); color: var(--accent-green); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">87%</div>
+              </div>
+              <h4 style="margin: 0 0 4px 0; color: var(--text-secondary); font-size: 12px; text-transform: uppercase;">Verificados</h4>
+              <div id="statVerified" style="font-size: 32px; font-weight: 800; color: var(--accent-green);">0</div>
+            </div>
+
+            <div class="card" style="padding: 28px; border: 2px solid rgba(255, 107, 53, 0.1); background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, transparent 100%);">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                <div style="font-size: 28px;">💰</div>
+                <div style="background: rgba(255,107,53,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">↑ 12%</div>
+              </div>
+              <h4 style="margin: 0 0 4px 0; color: var(--text-secondary); font-size: 12px; text-transform: uppercase;">Ingresos (DOP)</h4>
+              <div id="statRevenue" style="font-size: 32px; font-weight: 800; color: var(--accent-orange);">DOP 0</div>
+            </div>
+
+            <div class="card" style="padding: 28px; border: 2px solid rgba(100, 200, 255, 0.1); background: linear-gradient(135deg, rgba(0, 212, 255, 0.03) 0%, transparent 100%);">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                <div style="font-size: 28px;">📦</div>
+                <div style="background: rgba(0,212,255,0.1); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">8 BAJO STOCK</div>
+              </div>
+              <h4 style="margin: 0 0 4px 0; color: var(--text-secondary); font-size: 12px; text-transform: uppercase;">Productos</h4>
+              <div id="statProducts" style="font-size: 32px; font-weight: 800; color: #00d4ff;">0</div>
+            </div>
+          </div>
+
+          <!-- Navigation Tabs -->
+          <div style="display: flex; gap: 12px; margin-bottom: 32px; border-bottom: 2px solid rgba(0, 212, 255, 0.1); padding-bottom: 16px; overflow-x: auto;">
+            <button class="tab-btn active" data-tab="users" style="padding: 10px 20px; border: none; background: transparent; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">👥 Usuarios</button>
+            <button class="tab-btn" data-tab="products" style="padding: 10px 20px; border: none; background: transparent; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">📦 Productos</button>
+            <button class="tab-btn" data-tab="sponsors" style="padding: 10px 20px; border: none; background: transparent; color: var(--text-secondary); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">🤝 Patrocinios</button>
+          </div>
+
+          <!-- Users Tab -->
+          <div id="tab-users" class="tab-content">
+            <div class="card" style="padding: 32px; margin-bottom: 32px; border: 2px solid rgba(0, 212, 255, 0.1);">
+              <h3 style="margin-bottom: 24px; font-size: 20px;">➕ Crear Nuevo Usuario</h3>
+              <form id="createUserForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <input id="newUserName" type="text" placeholder="👤 Nombre" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="newUserLast" type="text" placeholder="👤 Apellido" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="newUserEmail" type="email" placeholder="📧 Correo" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="newUserPhone" type="text" placeholder="📱 Teléfono xxx-xxx" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <button type="submit" class="btn btn-primary" style="grid-column: 1 / -1;">⚡ Crear Usuario</button>
+              </form>
+            </div>
+            <div id="usersList"></div>
+          </div>
+
+          <!-- Products Tab -->
+          <div id="tab-products" class="tab-content" style="display: none;">
+            <div class="card" style="padding: 32px; margin-bottom: 32px; border: 2px solid rgba(0, 212, 255, 0.1);">
+              <h3 style="margin-bottom: 24px; font-size: 20px;">➕ Crear Nuevo Producto</h3>
+              <form id="createProductForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <input id="prodTitle" type="text" placeholder="📦 Nombre del Producto" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="prodPrice" type="number" placeholder="💰 Precio (DOP)" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="prodStock" type="number" placeholder="📊 Stock" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="prodCategory" type="text" placeholder="🏷️ Categoría" required style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <input id="prodImage" type="text" placeholder="🖼️ URL de Imagen" style="padding: 12px 16px; border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.02); color: white;">
+                <button type="submit" class="btn btn-primary" style="grid-column: 1 / -1;">⚡ Crear Producto</button>
+              </form>
+            </div>
+            <div id="productsList"></div>
+          </div>
+
+          <!-- Sponsors Tab -->
+          <div id="tab-sponsors" class="tab-content" style="display: none;">
+            <div id="sponsorRequests"></div>
+          </div>
+        </div>
+
+        <!-- Not Admin State -->
+        <div id="notAdmin" class="card" style="text-align: center; padding: 80px 40px;">
+          <div style="font-size: 80px; margin-bottom: 24px;">🚫</div>
+          <h3 style="font-size: 28px; margin-bottom: 12px;">Acceso Denegado</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 16px;">No tienes permisos de administrador para acceder a este panel</p>
+          <a href="index.html" class="btn btn-primary" style="padding: 12px 32px;">← Volver al Inicio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">© 2026 Zyrix</div>
+  </footer>
+
+  <!-- Floating Assistant -->
+  <div class="assistant-btn">🤖</div>
+
+  <script type="module" src="assets/js/admin-page.js"></script>
+  <script src="assets/js/assistant.js"></script>
+</body>
+</html>

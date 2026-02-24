@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cuenta — Zyrix</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">⚡ Zyrix</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="tienda.html" class="nav-link">Tienda</a>
+      <a href="patrocinadores.html" class="nav-link">Patrocinadores</a>
+      <a href="descargas.html" class="nav-link">Descargas</a>
+    </div>
+    <div class="navbar-account">
+      <div class="account-menu">
+        <img src="assets/images/default-avatar.svg" alt="avatar" class="account-avatar">
+        <div class="dropdown-menu">
+          <div id="accountName">Invitado</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom: 40px;">
+          <h2>👤 Mi Cuenta Zyrix</h2>
+          <p style="color: var(--text-secondary);">Gestiona tu perfil, órdenes y configuraciones</p>
+        </div>
+        
+        <div id="accountContent" style="display: none;">
+          <!-- Profile Section -->
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px;">
+            <!-- Personal Info Card -->
+            <div class="card" style="padding: 32px; border: 2px solid rgba(0, 212, 255, 0.2);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                <div style="font-size: 40px;">👤</div>
+                <div>
+                  <h3 id="userNameDisplay" style="margin: 0; font-size: 20px;">-</h3>
+                  <p id="userEmailDisplay" style="color: var(--text-secondary); margin: 0; font-size: 13px;">-</p>
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0, 212, 255, 0.1); padding-top: 16px;">
+                <div style="margin-bottom: 12px;">
+                  <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase;">📱 Teléfono</div>
+                  <div id="userPhoneDisplay" style="color: var(--text-primary); font-weight: 600;">-</div>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                  <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase;">✅ Estado</div>
+                  <div id="userStatus" style="color: var(--success); font-weight: 600;">-</div>
+                </div>
+
+                <div>
+                  <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase;">📅 Miembro Desde</div>
+                  <div id="memberSince" style="color: var(--text-primary); font-weight: 600;">-</div>
+                </div>
+              </div>
+
+              <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;">⚙️ Editar Perfil</button>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="card" style="padding: 32px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 53, 0.08) 100%); border: 2px solid rgba(0, 212, 255, 0.2);">
+              <h3 style="margin-bottom: 20px; color: var(--accent-electric);">📊 Tus Estadísticas</h3>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: var(--accent-electric); margin-bottom: 4px;" id="totalOrders">0</div>
+                  <div style="color: var(--text-secondary); font-size: 12px;">Órdenes Completadas</div>
+                </div>
+
+                <div style="text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: var(--accent-orange); margin-bottom: 4px;">🏆</div>
+                  <div style="color: var(--text-secondary); font-size: 12px;">Miembro VIP</div>
+                </div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; margin-top: 16px; text-align: center;">
+                <div style="color: var(--text-muted); font-size: 12px; margin-bottom: 4px;">Gasto Total</div>
+                <div id="totalSpend" style="font-size: 24px; font-weight: 800; color: var(--accent-electric);">DOP 0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders Section -->
+          <div class="card" style="padding: 32px;">
+            <h3 style="margin-bottom: 24px; font-size: 22px;">📦 Historial de Órdenes</h3>
+            <div id="ordersContainer"></div>
+          </div>
+        </div>
+
+        <!-- Not Logged In State -->
+        <div id="notLoggedIn" class="card" style="text-align: center; padding: 80px 40px;">
+          <div style="font-size: 80px; margin-bottom: 24px;">🔐</div>
+          <h3 style="font-size: 28px; margin-bottom: 12px;">Acceso Restringido</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 16px;">Para ver tu cuenta y hacer compras, necesitas iniciar sesión</p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="login.html" class="btn btn-primary" style="padding: 14px 28px;">⚡ Iniciar Sesión</a>
+            <a href="register.html" class="btn btn-secondary" style="padding: 14px 28px;">✨ Crear Cuenta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">© 2026 Zyrix</div>
+  </footer>
+
+  <!-- Floating Assistant -->
+  <div class="assistant-btn">🤖</div>
+
+  <script type="module">
+    import DB from './assets/js/database.js';
+    import { setupNavbar, setupAccountDropdown, getCurrentUser } from './assets/js/shared.js';
+
+    setupNavbar();
+    setupAccountDropdown();
+
+    (async function() {
+      await DB.init();
+
+      const user = getCurrentUser();
+      const accountContent = document.getElementById('accountContent');
+      const notLoggedIn = document.getElementById('notLoggedIn');
+
+      if (!user) {
+        accountContent.style.display = 'none';
+        notLoggedIn.style.display = 'block';
+        return;
+      }
+
+      accountContent.style.display = 'block';
+      notLoggedIn.style.display = 'none';
+
+      const dbUser = DB.findUserByEmail(user.email);
+      document.getElementById('userNameDisplay').textContent = `${dbUser.firstName} ${dbUser.lastName}`;
+      document.getElementById('userEmailDisplay').textContent = dbUser.email;
+      document.getElementById('userPhoneDisplay').textContent = dbUser.phone;
+      document.getElementById('userStatus').textContent = dbUser.verified ? '✅ Verificado' : '⏳ Pendiente verificación';
+      document.getElementById('memberSince').textContent = new Date(dbUser.createdAt || Date.now()).toLocaleDateString('es-ES');
+      
+      const orders = dbUser.orders || [];
+      document.getElementById('totalOrders').textContent = orders.length;
+      const totalSpend = orders.reduce((sum, o) => sum + (o.total || 0), 0);
+      document.getElementById('totalSpend').textContent = `DOP ${totalSpend.toLocaleString()}`;
+
+      const ordersContainer = document.getElementById('ordersContainer');
+      if (orders.length === 0) {
+        ordersContainer.innerHTML = '<p style="text-align: center; color: var(--text-muted);">No hay órdenes registradas</p>';
+      } else {
+        ordersContainer.innerHTML = orders.map(o => `
+          <div class="card" style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>${o.orderNumber}</strong>
+                <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">${new Date(o.createdAt).toLocaleDateString('es-ES')}</p>
+              </div>
+              <div style="text-align: right;">
+                <div style="color: var(--accent-primary); font-weight: 700;">DOP ${o.total.toLocaleString()}</div>
+                <div style="font-size: 12px; color: var(--text-muted);">${o.items.length} artículos</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    })();
+  </script>
+  <script src="assets/js/assistant.js"></script>
+</body>
+</html>

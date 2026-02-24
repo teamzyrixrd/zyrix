@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrarse — Zyrix</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">⚡ Zyrix</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="tienda.html" class="nav-link">Tienda</a>
+      <a href="patrocinadores.html" class="nav-link">Patrocinadores</a>
+      <a href="descargas.html" class="nav-link">Descargas</a>
+    </div>
+    <div class="navbar-account">
+      <div class="account-menu">
+        <img src="assets/images/default-avatar.svg" alt="avatar" class="account-avatar">
+        <div class="dropdown-menu">
+          <div id="accountName">Invitado</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main style="display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 80px);">
+    <section style="width: 100%; padding: 40px 20px;">
+      <div class="container" style="max-width: 520px; margin: 0 auto;">
+        <div class="card" style="padding: 48px; border: 2px solid rgba(0, 212, 255, 0.2);">
+          <div style="text-align: center; margin-bottom: 32px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+            <h1 style="font-size: 28px; margin-bottom: 8px;">Únete a Zyrix</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 0;">Escudería Nacional de STEM Racing</p>
+          </div>
+          
+          <form id="registerForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">👤 Nombre</label>
+                <input id="firstName" type="text" placeholder="Juan" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Apellido</label>
+                <input id="lastName" type="text" placeholder="García" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regEmail">📧 Correo Electrónico</label>
+              <input id="regEmail" type="email" placeholder="tu@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">📱 Teléfono</label>
+              <input id="phone" type="text" placeholder="809-123 (formato xxx-xxx)" required style="font-size: 13px;">
+            </div>
+
+            <div class="form-group">
+              <label for="regPass" style="display: flex; justify-content: space-between;">
+                <span>🔐 Contraseña</span>
+                <span id="passStrength" style="font-size: 11px; color: var(--text-muted);"></span>
+              </label>
+              <input id="regPass" type="password" placeholder="Min. 8 caracteres + 1 número" required>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Debe contener al menos 8 caracteres y 1 número</p>
+            </div>
+
+            <div class="form-group">
+              <label for="regPass2">🔒 Confirmar Contraseña</label>
+              <input id="regPass2" type="password" placeholder="Repetir contraseña" required>
+            </div>
+
+            <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 24px; cursor: pointer;">
+              <input type="checkbox" id="termsAgree" required style="margin-top: 4px;" />
+              <span style="font-size: 13px; color: var(--text-secondary);">
+                Acepto los <a href="#" style="color: var(--accent-electric);">Términos de Servicio</a> y <a href="#" style="color: var(--accent-electric);">Política de Privacidad</a> de Zyrix
+              </span>
+            </label>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px; margin-bottom: 12px;">
+              ⚡ Crear Cuenta Ahora
+            </button>
+
+            <div style="text-align: center;">
+              <p style="color: var(--text-secondary); font-size: 13px;">¿Ya tienes cuenta? 
+                <a href="login.html" style="color: var(--accent-electric); font-weight: 600; text-decoration: underline;">Inicia Sesión</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div style="margin-top: 24px; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 8px; padding: 16px; text-align: center;">
+          <p style="font-size: 12px; color: var(--text-secondary);">
+            <strong style="color: var(--text-primary);">🎯 Tip:</strong> Tu correo necesitará verificación con un código para completar el registro. ¡Solo toma 2 minutos!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verification Modal -->
+    <div id="verifyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">✅ Verificar Correo</h3>
+          <button class="modal-close" onclick="closeModal('verifyModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">Hemos enviado un código de verificación a tu correo. Ingresa el código para activar tu cuenta:</p>
+          <div class="form-group">
+            <label>Código de Verificación</label>
+            <input id="verifyCode" type="text" placeholder="ABC-123" required style="text-align: center; font-size: 18px; font-weight: 600; letter-spacing: 2px;">
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">
+            💡 <strong>Nota:</strong> El código tiene el formato ABC-123 (3 letras + 3 números)
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost" onclick="resendCode()">↻ Reenviar</button>
+          <button class="btn btn-primary" onclick="verifyEmail()">Verificar Código</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">© 2026 Zyrix</div>
+  </footer>
+
+  <!-- Floating Assistant -->
+  <div class="assistant-btn">🤖</div>
+
+  <script type="module" src="assets/js/auth-register.js"></script>
+  <script src="assets/js/assistant.js"></script>
+</body>
+</html>
